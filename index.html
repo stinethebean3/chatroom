@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Hello World!</title>
+    <style>
+      #history {
+        border: 1px black solid;
+        width: 200px;
+        height: 100px;
+      }
+    </style>
+    <script>
+    var socket = new WebSocket("ws://192.168.11.115:8001");
+    socket.onopen = function (event) {
+      console.log("Connected");
+    };
+    socket.onclose = function (event) {
+      console.log("Disconnected");
+    };
+    socket.onmessage = function (event) {
+      console.log(event.data);
+      var historyElement = document.getElementById('history');
+      historyElement.innerHTML += event.data + '<br>';
+    };
+    var sendMessage = function () {
+      var textElement = document.getElementById('message');
+      var text = textElement.value;
+      textElement.value = "";
+      console.log(text);
+      socket.send(text);
+    };
+    </script>
+  </head>
+  <body>
+    <div id="history"></div>
+    <input id="message" type="text">
+    <button id="submit" type="submit" onclick="sendMessage();">Send</button>
+  </body>
+</html>
