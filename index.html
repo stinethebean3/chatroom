@@ -4,8 +4,37 @@
     <style>
       #history {
         border: 1px black solid;
-        width: 200px;
-        height: 100px;
+        position: absolute;
+        top: 0px;
+        bottom: 40px;
+        left: 0px;
+        right: 0px;
+        overflow-y: scroll;
+        word-wrap: break-word;
+        padding: 10px;
+      }
+      #input {
+        position:absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        height: 40px;
+      }
+      #message {
+        position:absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 60px;
+        width: 100%;
+      }
+      #submit {
+        position:absolute;
+        top: 0px;
+        bottom: 0px;
+        width: 60px;
+        right: 0px;
+
       }
     </style>
     <script>
@@ -32,7 +61,9 @@
   </head>
   <body>
     <div id="history"></div>
-    <input id="message" type="text">
-    <button id="submit" type="submit" onclick="sendMessage();">Send</button>
+    <div id="input">
+      <input id="message" type="text">
+      <button id="submit" type="submit" onclick="sendMessage();">Send</button>
+    </div>
   </body>
 </html>
